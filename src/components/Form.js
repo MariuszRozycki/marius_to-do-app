@@ -1,33 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Form() {
-  const [inputText, setInputText] = useState("");
-  const [toDo, setToDo] = useState([]);
-  console.log("toDo", toDo);
+function Form({ inputText, todos, setTodos, setInputText }) {
 
   const inputTextHandler = (e) => {
-    setInputText(e.target.value)
+    setInputText(e.target.value);
   }
 
-  const submitToDoHandler = (e) => {
+  const submitTodoHandler = (e) => {
     e.preventDefault();
-    setToDo([
-      ...toDo,
+    setTodos([
+      ...todos,
       {
         text: inputText,
         completed: false,
-        id: Math.random() * 1000
+        id: Math.floor(Math.random() * 1000)
       }
-    ]);
-    setInputText("");
+    ])
+    setInputText("")
   }
+
 
   return (
     <form>
-      <input value={inputText} type="text" className="to-do--input" onChange={inputTextHandler} />
-      <button className="to-do--button" type="submit" onClick={submitToDoHandler}>Add task</button>
+      <input
+        value={inputText}
+        type="text"
+        className="todo-input"
+        onChange={inputTextHandler} />
+      <button className="todo-button" type="submit" onClick={submitTodoHandler}>Add task</button>
       <div className="select">
-        <select name="to-do--options" id="to-do--options" className="filter-options">
+        <select name="todos" id="todos" className="filter-todo">
           <option value="all">All</option>
           <option value="completed">Completed</option>
           <option value="uncompleted">Uncompleted</option>

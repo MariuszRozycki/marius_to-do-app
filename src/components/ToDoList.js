@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 
-function ToDoList() {
+import ToDo from "./ToDo";
+
+function ToDoList({ todos, setTodos }) {
+
   return (
-    <div className="to-do--container">
-      <ul className="to-do--list"></ul>
+    <div className="todo-container">
+      <ul className="todo-list">
+        {todos.map((todo, index) => (
+          <ToDo
+            key={index}
+            text={todo.text}
+            setTodos={setTodos}
+            todo={todo}
+            todos={todos}
+          />
+        ))}
+      </ul>
     </div>
   )
 }
