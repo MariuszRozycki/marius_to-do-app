@@ -4,18 +4,17 @@ function ToDo({ text, todo, todos, setTodos }) {
 
   const deleteHandler = () => {
     setTodos(todos.filter(el => el.id !== todo.id))
-  }
+  };
 
   const checkedHandler = () => {
     setTodos(todos.map(item => {
       if (item.id === todo.id) {
         return {
-          ...item,
-          completed: !item.completed
-        }
+          ...item, completed: !item.completed
+        };
       }
+      return item;
     }))
-    console.log(todos);
   }
 
   return (

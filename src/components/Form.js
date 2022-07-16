@@ -1,6 +1,7 @@
 import React from "react";
 
-function Form({ inputText, todos, setTodos, setInputText }) {
+function Form({ inputText, todos, setTodos, setInputText, status, setStatus }) {
+  console.log(status);
 
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
@@ -19,6 +20,10 @@ function Form({ inputText, todos, setTodos, setInputText }) {
     setInputText("")
   }
 
+  const statusHandler = (e) => {
+    setStatus(e.target.value)
+  }
+
 
   return (
     <form>
@@ -29,7 +34,7 @@ function Form({ inputText, todos, setTodos, setInputText }) {
         onChange={inputTextHandler} />
       <button className="todo-button" type="submit" onClick={submitTodoHandler}>Add task</button>
       <div className="select">
-        <select name="todos" id="todos" className="filter-todo">
+        <select name="todos" id="todos" className="filter-todo" onChange={statusHandler}>
           <option value="all">All</option>
           <option value="completed">Completed</option>
           <option value="uncompleted">Uncompleted</option>
